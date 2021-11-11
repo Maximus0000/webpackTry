@@ -1,3 +1,17 @@
+import * as Blockly from 'blockly';
+document.addEventListener("DOMContentLoaded", function () {
+    const workspace = Blockly.inject('blocklyDiv',
+        {
+            toolbox: document.getElementById('toolbox'),
+            media: 'media/',
+            trashcan: true
+        });
 
-console.log("index.js läuft");
-console.log("oder doch");
+    const lang = 'Python';
+    const button = document.getElementById('blocklyButton');
+    button.addEventListener('click', function () {
+        alert("Check the console for the generated output.");
+        const code = Blockly[lang].workspaceToCode(workspace);
+        console.log(code);
+    })
+});
